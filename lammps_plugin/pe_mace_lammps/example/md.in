@@ -1,0 +1,42 @@
+variable nsteps index 1000 #00
+variable numSteps        equal  10
+variable dt              equal  0.0005
+#newton on
+clear
+atom_modify   map yes
+newton on
+units           metal
+atom_style      atomic
+boundary        p p p
+read_data test.data
+pair_style mace no_domain_decomposition scalar -4.62 #emap #"1:Pt,2:O,3:H"
+pair_coeff * * model1_stagetwo.model-lammps.pt Pt O H # the order have to equal to the poscar.data
+neighbor 1.0 bin
+neigh_modify every 1 delay 1 check yes
+region fixed block INF INF INF INF -1 3.5
+group fixed region fixed
+group Pt type 1
+#set group fixed type 2
+velocity fixed set 0.0 0.0 0.0 units box
+fix 1 fixed setforce 0.0 0.0 0.0
+
+#min_style cg
+#minimize 1.0e-15 1.0e-15 10000 10000
+
+# # define mobile atoms
+group mobile subtract all fixed
+velocity mobile create 300.0 87287 dist gaussian
+# Run MD
+#velocity all create 300 4928459
+#compute mobile_v mobile temp
+timestep 0.001
+thermo 100
+fix 2 mobile nvt temp 300.0 300.0 0.1
+#compute mobile_v mobile temp 
+compute mytemp mobile temp # compute group the tempurature of mobile 
+thermo_style custom step c_mytemp epair etotal  
+dump 1 all xyz 1000 dump.xyz
+dump_modify 1 element Pt O H
+restart 100000 restart.*.equil
+run ${nsteps}
+
