@@ -1,3 +1,0 @@
-mace
-scripts
-tests
