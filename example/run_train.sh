@@ -1,4 +1,4 @@
-CUDA_VISIBLE_DEVICES=5 mace_run_train \
+CUDA_VISIBLE_DEVICES=0 mace_run_train \
     --name="model" \
     --train_file="./train.xyz" \
     --valid_fraction=0.05 \
@@ -13,11 +13,11 @@ CUDA_VISIBLE_DEVICES=5 mace_run_train \
     --num_cutoff_basis=5 \
     --correlation=2 \
     --r_max=5.0 \
-    --batch_size=50 \
+    --batch_size=10 \
     --valid_batch_size=5 \
     --eval_interval=1 \
-    --max_num_epochs=100 \
-    --start_swa=15 \
+    --max_num_epochs=4 \
+    --start_swa=2 \
     --swa_energy_weight=1000 \
     --ema \
     --ema_decay=0.99 \
