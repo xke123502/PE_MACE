@@ -1,6 +1,7 @@
 # PE_MACE
 
-PE_MACE （Potential-embedded MACE) is a mace implementation of Explicit Electric Potential - Machine Learning Force Field (EEP-MLFF). This project extends the [mace](https://github.com/ACEsuit/mace.git) framework to support explicit electric potential modeling  as described in [Constant-Potential Machine Learning Molecular Dynamics Simulations Reveal Potential-Regulated Cu Cluster Formation on MoS$_2$](https://pubs.acs.org/doi/10.1021/acs.jpcc.4c08188).
+PE_MACE （Potential-embedded MACE) is a mace implementation of Explicit Electric Potential - Machine Learning Force Field (EEP-MLFF). This project extends the [mace](https://github.com/ACEsuit/mace.git) framework to support explicit electric potential modeling as described in *Explicit Electric Potential-Embedded Machine Learning Framework: A Unified Description from Atomic to Electronic Scales*  
+([arXiv:2604.07322](https://arxiv.org/abs/2604.07322)).
 
 ## Installation
 
@@ -80,6 +81,16 @@ To use PE-MACE model to run constant potential molecular dynamics (CP-MLMD):
 If you use this code, please cite the following papers:
 
 ```text
+@article{Zhou2026,
+  title = {Explicit Electric Potential-Embedded Machine Learning Framework: A Unified Description from Atomic to Electronic Scales},
+  author = {Zhou, Jingwen and Yu, Yawen and Liu, Xuwei and Liu, Chungen},
+  year = {2026},
+  eprint = {2604.07322},
+  archivePrefix = {arXiv},
+  primaryClass = {physics.chem-ph},
+  url = {https://arxiv.org/abs/2604.07322},
+}
+
 @article{Zhou2025,
   title = {Constant-Potential Machine Learning Molecular Dynamics Simulations Reveal Potential-Regulated Cu Cluster Formation on MoS$_2$},
   author = {Zhou, Jingwen and Fu, Yunsong and Liu, Ling and Liu, Chungen},
