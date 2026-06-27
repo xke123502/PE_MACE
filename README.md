@@ -64,14 +64,21 @@ mace_eval_configs \
 ### Constant Potential MLMD
 
 To use PE-MACE model to run constant potential molecular dynamics (CP-MLMD):
+1. Clone right LAMMPS version
+```bash
+   git clone https://github.com/ACEsuit/lammps.git
+   cd lammps
+   git checkout 184b6fde  # Recommended - tested version
+```
+   > Note: Other commits/branches may also work, but commit `184b6fde` is the tested baseline.
 
-1. Copy the following files to replace the normal MACE-LAMMPS version:
+2. Copy the following files to replace the normal MACE-LAMMPS version:
    - `PE_MACE/lammps_plugin/pe_mace_lammps/KOKKOS/*`
    - `PE_MACE/lammps_plugin/pe_mace_lammps/ML-MACE/*`
 
-2. Build the plugin by following the instructions in `PE_MACE/lammps_plugin/pe_mace_lammps/build_set/cmake_install_mace.sh`
+3. Build the plugin by following the instructions in `PE_MACE/lammps_plugin/pe_mace_lammps/build_set/cmake_install_mace.sh`
 
-3. After training:
+4. After training:
    - Run `mace_create_lammps_model your_model.model` to generate `your_model.model-lammps.pt`
    - For the LAMMPS input file, refer to `PE_MACE/lammps_plugin/pe_mace_lammps/example/md.in`
    - In the input file, the `pair_style mace no_domain_decomposition scalar -4.62` parameter represents the Fermi level. You need to convert this value to electric potential (U).
